@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/order-discount-exam/static/css/main.f855e6bc.css",
+    "main.js": "/order-discount-exam/static/js/main.634e7cff.js",
+    "static/js/592.019fbfc4.chunk.js": "/order-discount-exam/static/js/592.019fbfc4.chunk.js",
+    "static/media/logo.svg": "/order-discount-exam/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/order-discount-exam/index.html",
+    "main.f855e6bc.css.map": "/order-discount-exam/static/css/main.f855e6bc.css.map",
+    "main.634e7cff.js.map": "/order-discount-exam/static/js/main.634e7cff.js.map",
+    "592.019fbfc4.chunk.js.map": "/order-discount-exam/static/js/592.019fbfc4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.634e7cff.js"
+  ]
+}
