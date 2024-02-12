@@ -6,7 +6,6 @@
   background-image: linear-gradient(rgb(214, 200, 200), rgb(189, 221, 226));
   min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
@@ -62,5 +61,24 @@
   padding: 10px;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.selection-coupon{
+  margin-left: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.coupon-item{
+  padding: 5px;
+  margin: 5px;
+  background-color: #c9cfdf;
+  box-shadow: 1px 1px 5px 1px #44474e;
+  border-radius: 20px;
+  color:#42454a;
+  width: 100vh
 }
 
