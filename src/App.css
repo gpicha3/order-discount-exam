@@ -92,3 +92,7 @@
   width: 100vh
 }
 
+.discount-total{
+  color: rgb(229, 133, 133);
+  text-align: right;
+}
