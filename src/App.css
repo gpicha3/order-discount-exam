@@ -82,3 +82,13 @@
   width: 100vh
 }
 
+.coupon-item-selected {
+  padding: 5px;
+  margin: 5px;
+  background-color: #98a5c9;
+  box-shadow: 1px 1px 5px 1px #454c5b;
+  border-radius: 20px;
+  color:white;
+  width: 100vh
+}
+

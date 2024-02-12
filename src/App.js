@@ -11,9 +11,14 @@ function App() {
 
   const [totalPrice , setTotalPrice] = useState(0)
   const [userPoint , setUserPoint] = useState(100)
+
   const [coupons , setCoupons] = useState([])
   const [ontops , setOntops] = useState([])
   const [seasonals , setSeasonals] = useState([])
+
+  const [couponSelect , setCouponSelect] = useState(0)
+  const [ontopSelect , setOnTopSelect] = useState(0)
+  const [seasonalsSelect , setSeasonalSelect] = useState(0)
 
   useEffect(() => {
     let sum = 0;
@@ -23,15 +28,15 @@ function App() {
     setTotalPrice(sum);
 
     const coupon = []
-    coupon.push(createCoupon("Fixed amount" , 50))
-    coupon.push(createCoupon("Percentage discount" , 10))
+    coupon.push(createCoupon(1 , "Fixed amount" , 50))
+    coupon.push(createCoupon(2 , "Percentage discount" , 10))
 
     const ontop = []
-    ontop.push(createOnTop("Accessories" , 15))
-    ontop.push(createOnTop("Customer points" , 0))
+    ontop.push(createOnTop(1 , "Accessories" , 15))
+    ontop.push(createOnTop(2 , "Customer points" , 0))
 
     const seasonal = []
-    seasonal.push(createSeasonal(300 , 40))
+    seasonal.push(createSeasonal(1 , 300 , 40))
 
     setCoupons(coupon)
     setOntops(ontop)
@@ -39,9 +44,12 @@ function App() {
 
   }, [cart]);
 
-  useEffect(() => {
-    console.log(coupons);
-  }, [coupons])
+  const selected = "coupon-item-selected"
+
+  const calculateTotalPrice = () => {
+
+  }
+
   return (
     <div className="App">
       <div className="App-header">
@@ -75,7 +83,7 @@ function App() {
             <div className='selection-coupon'>
             {coupons.map((coupon) => {
               return (
-                <div className='coupon-item'>
+                <div className={`${couponSelect === coupon.id? selected : "coupon-item"}`} onClick={() => {couponSelect === coupon.id? setCouponSelect(0) : setCouponSelect(coupon.id)}}>
                   <h6>{coupon.coupon} : {coupon.discount}</h6>
                 </div>
               )
@@ -87,7 +95,7 @@ function App() {
             <div className='selection-coupon'>
             {ontops.map((coupon) => {
               return (
-                <div className='coupon-item'>
+                <div className={`${ontopSelect === coupon.id? selected : "coupon-item"}`} onClick={() => {ontopSelect === coupon.id? setOnTopSelect(0) : setOnTopSelect(coupon.id)}}>
                   <h6>{coupon.categoryProduct} : {coupon.discount}</h6>
                 </div>
               )
@@ -99,7 +107,7 @@ function App() {
             <div className='selection-coupon'>
             {seasonals.map((coupon) => {
               return (
-                <div className='coupon-item'>
+                <div className={`${seasonalsSelect === coupon.id? selected : "coupon-item"}`} onClick={() => {seasonalsSelect === coupon.id? setSeasonalSelect(0) : setSeasonalSelect(coupon.id)}}>
                   <h6>Every {coupon.every} <br/>discount {coupon.discount}</h6>
                 </div>
               )
