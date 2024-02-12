@@ -7,7 +7,7 @@ import createSeasonal from './helper/seasonal';
 
 function App() {
 
-  const cart = products;
+  const [cart , setCart] = useState(products)
 
   const [totalPrice , setTotalPrice] = useState(0)
   const [userPoint , setUserPoint] = useState(100)
@@ -57,6 +57,7 @@ function App() {
   const selected = "coupon-item-selected"
 
   const calculateTotalPrice = () => {
+    setCart(products)
     let price = findTotolPrice()
 
     if(couponSelect !== 0){
@@ -79,11 +80,19 @@ function App() {
       })
       if(ontop.categoryProduct !== "Customer points"){
         let discount = 0;
+        let isHaveDiscountBefore = () => {
+          const coupon = coupons.find((item)=>{
+            return item.id === couponSelect
+          })
+          if(coupon === undefined){return 1}
+          return coupon.coupon === "Percentage discount"? (100-coupon.discount)/100 : 1
+        }
         const itemDiscount = cart.filter((item) => {
           return item.category === ontop.categoryProduct
         })
         itemDiscount.map((item) => {
-          discount += item.price * ontop.discount/100
+          console.log(isHaveDiscountBefore());
+          discount += item.price * isHaveDiscountBefore() * (ontop.discount/100)
         })
         setOnTopDiscount(discount)
         price -= discount
@@ -115,9 +124,8 @@ function App() {
 
   useEffect(() => {
     calculateTotalPrice();
-    if(ontopSelect === 0){
-      setUserPoint(backupUserPoint);
-    }
+    setCart(products)
+    // setUserPoint(backupUserPoint);
   } , [couponSelect , ontopSelect , seasonalSelect])
 
   return (
